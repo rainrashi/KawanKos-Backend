@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"server": "nodemon server --ignore-client",
-		"client": "cd ../Kawankos-fronted && npm start",
+		"client": "cd ../Kawankos-frontend && npm start",
 		"start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
 	},
 	"keywords": [],
