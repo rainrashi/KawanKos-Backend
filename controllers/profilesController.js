@@ -131,6 +131,9 @@ const getProfileDetail = async (req, res) => {
 		userMajor: profile.userMajor,
 		userBudget: profile.userBudget,
 		userDescription: profile.userDescription,
+		userHasLocation: profile.userHasLocation,
+		userLocation: profile.userLocation,
+		userLocationPrice: profile.userLocationPrice,
 	}
 
 	res.status(StatusCodes.OK).json({ profileDetails })

@@ -18,6 +18,7 @@ import {
 	login,
 	updateUser,
 	updateUserFoundPartner,
+	updateUserAvatar,
 } from '../controllers/authController.js'
 import authenticateUser from '../middleware/auth.js'
 // import testUser from '../middleware/testUser.js'
@@ -29,5 +30,6 @@ router.route('/updateUser').patch(authenticateUser, updateUser)
 router
 	.route('/updateUserFoundPartner')
 	.patch(authenticateUser, updateUserFoundPartner)
+router.route('/updateUserAvatar').patch(authenticateUser, updateUserAvatar)
 
 export default router

@@ -21,7 +21,7 @@ const upload = (req, res, next) => {
 		fs.unlinkSync(image)
 		return res
 			.status(StatusCodes.BAD_REQUEST)
-			.json({ msg: 'File ini tidak didukung' })
+			.json({ msg: 'File ini tidak didukung (hanya JPG, JPEG, dan PNG)' })
 	}
 
 	//filesize

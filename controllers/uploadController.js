@@ -1,6 +1,8 @@
 import { StatusCodes } from 'http-status-codes'
 import cloudinary from 'cloudinary'
 import fs from 'fs'
+import dotenv from 'dotenv'
+dotenv.config()
 
 cloudinary.config({
 	cloud_name: process.env.CLOUD_NAME,

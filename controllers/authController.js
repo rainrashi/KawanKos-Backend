@@ -176,4 +176,18 @@ const updateUserFoundPartner = async (req, res) => {
 	res.status(StatusCodes.OK).json({ user, token })
 }
 
-export { register, login, updateUser, updateUserFoundPartner }
+const updateUserAvatar = async (req, res) => {
+	const { userAvatar } = req.body
+
+	const user = await User.findOne({ _id: req.user.userId })
+
+	user.userAvatar = userAvatar
+
+	await user.save()
+
+	const token = user.createJWT()
+
+	res.status(StatusCodes.OK).json({ user, token })
+}
+
+export { register, login, updateUser, updateUserFoundPartner, updateUserAvatar }
