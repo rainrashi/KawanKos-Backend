@@ -45,6 +45,13 @@ app.use(mongoSanitize())
 // 	response.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
 // })
 
+app.get('/', (req, res) => {
+	res.send('Hello World!')
+})
+app.get('/api/v1', (req, res) => {
+	res.send('Hello World! from api v1')
+})
+
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/profiles', profileRouter)
 app.use('/api/v1/messages', authenticateUser, messageRouter)
