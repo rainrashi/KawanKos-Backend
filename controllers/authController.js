@@ -77,10 +77,9 @@ const register = async (req, res) => {
 			userHasLocation: user.userHasLocation,
 			userLocation: user.userLocation,
 			userLocationPrice: user.userLocationPrice,
-			// location: user.location,
+			userAvatar: 'defaultAvatar',
 		},
 		token,
-		// location: user.location,
 	})
 }
 
@@ -164,11 +163,9 @@ const updateUser = async (req, res) => {
 //userFoundPartner flip function
 const updateUserFoundPartner = async (req, res) => {
 	const { userFoundPartner } = req.body
-
 	const user = await User.findOne({ _id: req.user.userId })
 
 	user.userFoundPartner = userFoundPartner
-
 	await user.save()
 
 	const token = user.createJWT()
@@ -178,11 +175,9 @@ const updateUserFoundPartner = async (req, res) => {
 
 const updateUserAvatar = async (req, res) => {
 	const { userAvatar } = req.body
-
 	const user = await User.findOne({ _id: req.user.userId })
 
 	user.userAvatar = userAvatar
-
 	await user.save()
 
 	const token = user.createJWT()

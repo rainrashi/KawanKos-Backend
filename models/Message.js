@@ -23,16 +23,7 @@ const MessageSchema = new mongoose.Schema(
 		messageReplyTo: {
 			type: String,
 			// ID of message it replies to, not  userid
-			//? change it into objectID?
 		},
-		// messageFromName: {
-		// 	type: String,
-		// 	//name of sender
-		// },
-		// messageToName: {
-		// 	type: String,
-		// 	//name of recipient
-		// },
 		messageSeen: { type: Boolean, default: false },
 	},
 	{ timestamps: true }

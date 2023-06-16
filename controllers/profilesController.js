@@ -2,17 +2,7 @@ import NotFoundError from '../errors/not-found.js'
 import User from '../models/User.js'
 import { StatusCodes } from 'http-status-codes'
 
-// const getAllProfiles = async (req, res) => {
-// 	const profiles = await User.find({})
-
-// 	res
-// 		.status(StatusCodes.OK)
-// 		.json({ profiles, totalprofiles: profiles.length, numOfPages: 1 })
-// }
-
-// TODO  UPDATE KETIKA SUDAH SUKSES TEST
 const getAllProfiles = async (req, res) => {
-	// TODO update dengan kondisi lebih lengkap nanti
 	const {
 		search,
 		userHomeTown,

@@ -11,7 +11,7 @@ const start = async () => {
 		await connectDB(process.env.MONGO_URL)
 		await User.deleteMany()
 		const jsonProducts = JSON.parse(
-			await readFile(new URL('./KK-Profiles.json', import.meta.url))
+			await readFile(new URL('./KK-Profiles-finale.json', import.meta.url))
 		)
 		await User.create(jsonProducts)
 		console.log('Success!')

@@ -1,7 +1,7 @@
 {
 	"name": "kawankosify",
 	"version": "1.0.0",
-	"description": "Project in Action - [Jobify](https://www.jobify.live/)",
+	"description": "KawanKos - Teman kamu mencari KawanKos!",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {

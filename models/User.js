@@ -35,10 +35,6 @@ const UserSchema = new mongoose.Schema(
 			type: String,
 			required: [true, 'Tolong isi data jenis kelamin anda.'],
 		},
-		/* userBirthDate: {
-			type: Date,
-			required: [true, 'Tolong isi tanggal lahir anda.'],
-		}, */
 		userAge: { type: Number, required: [true, 'Tolong isi usia anda'] },
 		userHomeTown: {
 			type: String,
@@ -85,7 +81,6 @@ const UserSchema = new mongoose.Schema(
 )
 
 UserSchema.pre('save', async function () {
-	// console.log(this.modifiedPaths())
 	if (!this.isModified('password')) return
 	const salt = await bcrypt.genSalt(13)
 	this.password = await bcrypt.hash(this.password, salt)
