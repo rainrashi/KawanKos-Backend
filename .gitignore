@@ -22,3 +22,8 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+KK-Profiles.json
+MOCK_DATA_PROFILES.csv
+mock-data-oldjob.json
+mock-data.json
