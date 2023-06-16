@@ -1,6 +1,5 @@
 //cors
 import cors from 'cors'
-const cors = cors()
 
 import express from 'express'
 const app = express()
