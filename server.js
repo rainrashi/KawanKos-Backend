@@ -1,5 +1,5 @@
-//serverless
-const serverless = require('serverless')
+//cors
+const cors = require('cors')
 
 import express from 'express'
 const app = express()
@@ -31,7 +31,8 @@ import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 import authenticateUser from './middleware/auth.js'
 
-//serverless
+//cors
+app.use(cors())
 
 if (process.env.NODE_ENV !== 'production') {
 	app.use(morgan('dev'))
@@ -56,9 +57,6 @@ app.use('/api/v1/messages', authenticateUser, messageRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
-
-//serverless p2
-module.exports.handler = serverless(app)
 
 const port = process.env.PORT || 7000
 
