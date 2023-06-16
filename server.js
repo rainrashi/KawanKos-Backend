@@ -1,3 +1,6 @@
+//cors
+const cors = require('cors')
+
 import express from 'express'
 const app = express()
 import dotenv from 'dotenv'
@@ -27,6 +30,13 @@ import messageRouter from './routes/messagesRoutes.js'
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 import authenticateUser from './middleware/auth.js'
+
+//cors
+app.use(
+	cors({
+		origin: ['http://localhost:3000', 'https://kawankos-beta.onrender.com'],
+	})
+)
 
 if (process.env.NODE_ENV !== 'production') {
 	app.use(morgan('dev'))
