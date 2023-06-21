@@ -19,6 +19,7 @@ const register = async (req, res) => {
 		userHasLocation,
 		userLocation,
 		userLocationPrice,
+		userLocationArea,
 	} = req.body
 
 	if (
@@ -77,6 +78,7 @@ const register = async (req, res) => {
 			userHasLocation: user.userHasLocation,
 			userLocation: user.userLocation,
 			userLocationPrice: user.userLocationPrice,
+			userLocationArea: user.userLocationArea,
 			userAvatar: 'defaultAvatar',
 		},
 		token,
@@ -118,6 +120,7 @@ const updateUser = async (req, res) => {
 		userHasLocation,
 		userLocation,
 		userLocationPrice,
+		userLocationArea,
 	} = req.body
 
 	if (
@@ -152,6 +155,7 @@ const updateUser = async (req, res) => {
 	user.userHasLocation = userHasLocation
 	user.userLocation = userLocation
 	user.userLocationPrice = userLocationPrice
+	user.userLocationArea = userLocationArea
 
 	await user.save()
 

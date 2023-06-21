@@ -12,6 +12,7 @@ const getAllProfiles = async (req, res) => {
 		userGender,
 		userReligion,
 		userHasLocation,
+		userLocationArea,
 		sort,
 	} = req.query
 
@@ -53,6 +54,11 @@ const getAllProfiles = async (req, res) => {
 			queryObject.userHasLocation = false
 		}
 	}
+
+	if (userLocationArea && userLocationArea !== 'semua') {
+		queryObject.userLocationArea = userLocationArea
+	}
+
 	let result = User.find(queryObject)
 
 	//kondisi sort
@@ -124,6 +130,7 @@ const getProfileDetail = async (req, res) => {
 		userHasLocation: profile.userHasLocation,
 		userLocation: profile.userLocation,
 		userLocationPrice: profile.userLocationPrice,
+		userLocationArea: profile.userLocationArea,
 	}
 
 	res.status(StatusCodes.OK).json({ profileDetails })

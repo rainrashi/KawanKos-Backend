@@ -64,6 +64,10 @@ const UserSchema = new mongoose.Schema(
 		userLocationPrice: {
 			type: Number,
 		},
+		userLocationArea: {
+			type: String,
+			default: 'Jakarta Pusat',
+		},
 		userBudget: {
 			type: Number,
 			required: [true, 'Tolong isi budget anda.'],
