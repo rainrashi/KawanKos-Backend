@@ -1,6 +1,7 @@
 import NotFoundError from '../errors/not-found.js'
 import User from '../models/User.js'
 import { StatusCodes } from 'http-status-codes'
+import checkPermissions from '../utils/checkPermissions.js'
 
 const getAllProfiles = async (req, res) => {
 	const {
@@ -59,6 +60,10 @@ const getAllProfiles = async (req, res) => {
 		queryObject.userLocationArea = userLocationArea
 	}
 
+	//ADMINT ID
+	// 64930252d7026861a3febd8f
+	queryObject._id = { $ne: '64930252d7026861a3febd8f' }
+
 	let result = User.find(queryObject)
 
 	//kondisi sort
@@ -114,26 +119,25 @@ const getProfileDetail = async (req, res) => {
 	}
 
 	//just the personal data, not user data
-	const profileDetails = {
-		id: profile.id,
-		name: profile.name,
-		userAvatar: profile.userAvatar,
-		userGender: profile.userGender,
-		userAge: profile.userAge,
-		userHomeTown: profile.userHomeTown,
-		userStatus: profile.userStatus,
-		userReligion: profile.userReligion,
-		userJob: profile.userJob,
-		userMajor: profile.userMajor,
-		userBudget: profile.userBudget,
-		userDescription: profile.userDescription,
-		userHasLocation: profile.userHasLocation,
-		userLocation: profile.userLocation,
-		userLocationPrice: profile.userLocationPrice,
-		userLocationArea: profile.userLocationArea,
-	}
+	const profileDetails = profile
 
 	res.status(StatusCodes.OK).json({ profileDetails })
 }
 
-export { getAllProfiles, getProfileDetail }
+const deleteProfileAdm = async (req, res) => {
+	const { id: profileId } = req.params
+
+	const profile = await User.findOne({ _id: profileId })
+
+	if (!profile) {
+		throw new NotFoundError(`ID ${profileId} tidak ditemukan`)
+	}
+
+	// checkPermissions(req.user, '64930252d7026861a3febd8f')
+
+	await profile.deleteOne({ _id: profileId })
+
+	res.status(StatusCodes.OK).json({ msg: 'Profil telah dihapus.' })
+}
+
+export { getAllProfiles, getProfileDetail, deleteProfileAdm }

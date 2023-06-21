@@ -22,6 +22,7 @@ import connectDB from './db/connect.js'
 import authRouter from './routes/authRoutes.js'
 import profileRouter from './routes/profilesRoutes.js'
 import messageRouter from './routes/messagesRoutes.js'
+import messageAdminRouter from './routes/messagesAdminRoutes.js'
 
 //middleware
 import notFoundMiddleware from './middleware/not-found.js'
@@ -54,7 +55,15 @@ app.get('/api/v1', (req, res) => {
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/profiles', profileRouter)
+app.use('/superpanel/api/v1/profiles', profileRouter)
+app.use('/superpanel/central-dogma/api/v1/profiles', profileRouter)
 app.use('/api/v1/messages', authenticateUser, messageRouter)
+app.use('/superpanel/api/v1/messages', authenticateUser, messageAdminRouter)
+app.use(
+	'/superpanel/central-dogma/api/v1/messages',
+	authenticateUser,
+	messageAdminRouter
+)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
